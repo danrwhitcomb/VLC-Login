@@ -19,7 +19,7 @@
 @property (nonatomic, strong) AVCaptureDevice* device;
 @property NSData* key;
 @property CFBitVectorRef keyVector;
-@property int keyVectorLength;
+@property long keyVectorLength;
 @property NSString* keyString;
 @property int bitIndex;
 
@@ -43,6 +43,12 @@ dispatch_source_t timer;
     self.keyVector = CFBitVectorCreate(NULL, [self.key bytes], [self.keyString length] * 8);
     self.keyVectorLength = CFBitVectorGetCount(self.keyVector);
     self.bitIndex = 0;
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self.device lockForConfiguration:nil];
+    [self.device setTorchMode: AVCaptureTorchModeOn];
+    [self.device unlockForConfiguration];
 }
 
 - (void)didReceiveMemoryWarning {
