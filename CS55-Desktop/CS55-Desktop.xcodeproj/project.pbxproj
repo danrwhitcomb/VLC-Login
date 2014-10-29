@@ -8,11 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		39027F9319F74C0700FEA46E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39027F9219F74C0700FEA46E /* main.m */; };
-		39027F9619F74C0700FEA46E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39027F9519F74C0700FEA46E /* AppDelegate.m */; };
+		39027F9619F74C0700FEA46E /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39027F9519F74C0700FEA46E /* AppDelegate.mm */; };
 		39027F9819F74C0700FEA46E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39027F9719F74C0700FEA46E /* Images.xcassets */; };
 		39027F9B19F74C0700FEA46E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39027F9919F74C0700FEA46E /* MainMenu.xib */; };
 		39027FA719F74C0800FEA46E /* CS55_DesktopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39027FA619F74C0800FEA46E /* CS55_DesktopTests.m */; };
 		39422A2819F7504900D17DD1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39422A2719F7504900D17DD1 /* AVFoundation.framework */; };
+		399C563819FEC59300E0DF66 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399C563519FEC59300E0DF66 /* Accelerate.framework */; };
+		399C563919FEC59300E0DF66 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399C563619FEC59300E0DF66 /* CoreGraphics.framework */; };
+		399C563A19FEC59300E0DF66 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399C563719FEC59300E0DF66 /* CoreMedia.framework */; };
+		399C563D19FEC5B100E0DF66 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399C563B19FEC5B100E0DF66 /* CoreVideo.framework */; };
+		399C563E19FEC5B100E0DF66 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399C563C19FEC5B100E0DF66 /* QuartzCore.framework */; };
+		39EA6F061A00329E0022BAA7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EA6F051A00329E0022BAA7 /* opencv2.framework */; };
+		39EA6F081A0037480022BAA7 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EA6F071A0037480022BAA7 /* OpenCL.framework */; };
+		39EA6F0A1A0038F90022BAA7 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EA6F091A0038F90022BAA7 /* QTKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +38,21 @@
 		39027F9119F74C0700FEA46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39027F9219F74C0700FEA46E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		39027F9419F74C0700FEA46E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		39027F9519F74C0700FEA46E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		39027F9519F74C0700FEA46E /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		39027F9719F74C0700FEA46E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		39027F9A19F74C0700FEA46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		39027FA019F74C0700FEA46E /* CS55-DesktopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CS55-DesktopTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39027FA519F74C0800FEA46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39027FA619F74C0800FEA46E /* CS55_DesktopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CS55_DesktopTests.m; sourceTree = "<group>"; };
-		39422A2519F74EA400D17DD1 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		39422A2719F7504900D17DD1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		399C563519FEC59300E0DF66 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		399C563619FEC59300E0DF66 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		399C563719FEC59300E0DF66 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		399C563B19FEC5B100E0DF66 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		399C563C19FEC5B100E0DF66 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		39EA6F051A00329E0022BAA7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		39EA6F071A0037480022BAA7 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		39EA6F091A0038F90022BAA7 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +60,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39EA6F0A1A0038F90022BAA7 /* QTKit.framework in Frameworks */,
+				39EA6F081A0037480022BAA7 /* OpenCL.framework in Frameworks */,
+				399C563D19FEC5B100E0DF66 /* CoreVideo.framework in Frameworks */,
+				39EA6F061A00329E0022BAA7 /* opencv2.framework in Frameworks */,
+				399C563E19FEC5B100E0DF66 /* QuartzCore.framework in Frameworks */,
+				399C563819FEC59300E0DF66 /* Accelerate.framework in Frameworks */,
+				399C563919FEC59300E0DF66 /* CoreGraphics.framework in Frameworks */,
+				399C563A19FEC59300E0DF66 /* CoreMedia.framework in Frameworks */,
 				39422A2819F7504900D17DD1 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,8 +85,15 @@
 		39027F8419F74C0700FEA46E = {
 			isa = PBXGroup;
 			children = (
+				39EA6F091A0038F90022BAA7 /* QTKit.framework */,
+				39EA6F071A0037480022BAA7 /* OpenCL.framework */,
+				39EA6F051A00329E0022BAA7 /* opencv2.framework */,
+				399C563B19FEC5B100E0DF66 /* CoreVideo.framework */,
+				399C563C19FEC5B100E0DF66 /* QuartzCore.framework */,
+				399C563519FEC59300E0DF66 /* Accelerate.framework */,
+				399C563619FEC59300E0DF66 /* CoreGraphics.framework */,
+				399C563719FEC59300E0DF66 /* CoreMedia.framework */,
 				39422A2719F7504900D17DD1 /* AVFoundation.framework */,
-				39422A2519F74EA400D17DD1 /* QTKit.framework */,
 				39027F8F19F74C0700FEA46E /* CS55-Desktop */,
 				39027FA319F74C0700FEA46E /* CS55-DesktopTests */,
 				39027F8E19F74C0700FEA46E /* Products */,
@@ -83,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				39027F9419F74C0700FEA46E /* AppDelegate.h */,
-				39027F9519F74C0700FEA46E /* AppDelegate.m */,
+				39027F9519F74C0700FEA46E /* AppDelegate.mm */,
 				39027F9719F74C0700FEA46E /* Images.xcassets */,
 				39027F9919F74C0700FEA46E /* MainMenu.xib */,
 				39027F9019F74C0700FEA46E /* Supporting Files */,
@@ -216,7 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39027F9619F74C0700FEA46E /* AppDelegate.m in Sources */,
+				39027F9619F74C0700FEA46E /* AppDelegate.mm in Sources */,
 				39027F9319F74C0700FEA46E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,8 +362,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "CS55-Desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -343,8 +378,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "CS55-Desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

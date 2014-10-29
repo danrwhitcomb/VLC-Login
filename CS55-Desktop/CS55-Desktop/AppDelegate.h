@@ -6,9 +6,15 @@
 //  Copyright (c) 2014 Dan Whitcomb. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#include <opencv2/highgui/highgui_c.h>
+#include "opencv2/opencv.hpp"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+#import <Cocoa/Cocoa.h>
+#import <AVFoundation/AVFoundation.h>
+#import <QTKit/QTKit.h>
+
+
+@interface AppDelegate : NSObject <NSApplicationDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 
 @end
