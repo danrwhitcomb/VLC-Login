@@ -17,25 +17,64 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNH-t1-47a">
-                                <rect key="frame" x="156" y="195" width="288" height="209"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="156" y="195" width="288" height="97"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.50980392159999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="577-z8-eGH"/>
+                                    <constraint firstAttribute="height" constant="97" id="SMU-MC-bue"/>
+                                </constraints>
                                 <state key="normal" title="Flash">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onBtnFlash:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EW8-fZ-j0D"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vBz-Hm-Czl">
+                                <rect key="frame" x="156" y="157" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="X8N-1p-ssL"/>
+                                    <constraint firstAttribute="width" constant="288" id="YBd-pN-uLV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7e-cI-fdh">
+                                <rect key="frame" x="277" y="119" width="57" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="Jf8-dH-q8D"/>
+                                    <constraint firstAttribute="height" constant="30" id="r6Q-Y2-FUO"/>
+                                </constraints>
+                                <state key="normal" title="Start Bit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBtnStartBit:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eaJ-vy-Lpl"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" secondItem="MNH-t1-47a" secondAttribute="height" id="5KJ-W5-CkI"/>
+                            <constraint firstAttribute="centerX" secondItem="vBz-Hm-Czl" secondAttribute="centerX" id="9QY-6F-HNH"/>
+                            <constraint firstAttribute="centerX" secondItem="z7e-cI-fdh" secondAttribute="centerX" id="Izb-4P-8dr"/>
+                            <constraint firstAttribute="centerY" secondItem="z7e-cI-fdh" secondAttribute="centerY" constant="100" id="Kdg-Ca-W1y"/>
+                            <constraint firstAttribute="centerY" secondItem="vBz-Hm-Czl" secondAttribute="centerY" constant="200" id="eKm-XB-buo"/>
                             <constraint firstAttribute="centerX" secondItem="MNH-t1-47a" secondAttribute="centerX" id="hEi-gI-tmK"/>
                             <constraint firstAttribute="centerY" secondItem="MNH-t1-47a" secondAttribute="centerY" id="m3e-zc-lKt"/>
                             <constraint firstAttribute="width" secondItem="MNH-t1-47a" secondAttribute="width" id="vEW-wl-qq8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5KJ-W5-CkI"/>
+                                <exclude reference="vEW-wl-qq8"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="keyField" destination="vBz-Hm-Czl" id="yt4-en-igY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

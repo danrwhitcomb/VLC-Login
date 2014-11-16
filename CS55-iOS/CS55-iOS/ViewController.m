@@ -10,7 +10,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 
-#define KEY_STRING "TEST!!!"
 
 @interface ViewController ()
 
@@ -22,28 +21,55 @@
 @property long keyVectorLength;
 @property NSString* keyString;
 @property int bitIndex;
+@property (strong, nonatomic) IBOutlet UITextField *keyField;
+@property bool isFlashing;
 
 @end
 
 dispatch_source_t timer;
+float torch_on = .5;
+float torch_off = 0.05;
 
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];    
-    
+    self.keyField.delegate = self;
     self.session = [[AVCaptureSession alloc] init];
     [self configureCamera];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(turnOnTorch) name:UIApplicationDidBecomeActiveNotification object:nil];
+
     
-    self.keyString = [NSString stringWithUTF8String:KEY_STRING];
-    const char *utfString = [self.keyString UTF8String];
-    self.key = [NSData dataWithBytes: utfString length: strlen(utfString)];
-    
-    self.keyVector = CFBitVectorCreate(NULL, [self.key bytes], [self.keyString length] * 8);
-    self.keyVectorLength = CFBitVectorGetCount(self.keyVector);
     self.bitIndex = 0;
 }
+
+-(void) turnOnTorch {
+    [self.device lockForConfiguration:nil];
+    [self.device setTorchMode:AVCaptureTorchModeOn];
+    [self.device unlockForConfiguration];
+}
+
+-(void) setKeyStringVector:(NSString*)string{
+    const char *utfString = [string UTF8String];
+    int length = strlen(utfString);
+    self.key = [NSData dataWithBytes: utfString length: strlen(utfString)];
+    
+    CFBitVectorRef vector = CFBitVectorCreate(NULL, [self.key bytes], length * 8);
+    CFMutableBitVectorRef mVector = CFBitVectorCreateMutable(kCFAllocatorDefault, 0);
+    CFBitVectorSetCount(mVector, length*8+1);
+    CFBitVectorSetBitAtIndex(mVector, 0, 0);
+    
+    
+    
+    for(int i=1; i <= length*sizeof(char)*8; i++){
+        CFBitVectorSetBitAtIndex(mVector, i, CFBitVectorGetBitAtIndex(vector, i-1));
+    }
+    
+    self.keyVectorLength = CFBitVectorGetCount(mVector);
+    self.keyVector = CFBitVectorCreateCopy(NULL, mVector);
+}
+
 
 - (void) viewDidAppear:(BOOL)animated {
     [self.device lockForConfiguration:nil];
@@ -69,11 +95,13 @@ dispatch_source_t timer;
 }
 
 -(void) toggleTorch{
+    [self.device lockForConfiguration:nil];
     if([self.device torchMode] == AVCaptureTorchModeOn){
         [self.device setTorchMode:AVCaptureTorchModeOff];
     } else {
         [self.device setTorchMode:AVCaptureTorchModeOn];
     }
+    [self.device unlockForConfiguration];
 }
 
 /*
@@ -97,7 +125,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 void MyCreateTimer(id self)
 {
-    dispatch_source_t aTimer = CreateDispatchTimer(3.32,
+    dispatch_source_t aTimer = CreateDispatchTimer(100000000,
                                                    0ull * NSEC_PER_SEC,
                                                    dispatch_get_main_queue(),
                                                    ^{
@@ -115,15 +143,41 @@ void MyCreateTimer(id self)
 
 
 - (IBAction)onBtnFlash:(id)sender {
+    [self setKeyStringVector:self.keyField.text];
+    if(!self.isFlashing){
+        MyCreateTimer(self);
+        self.isFlashing = YES;
+    } else if(self.bitIndex > self.keyVectorLength - 1 && self.isFlashing){
+        [self cancelFlash];
+    }
+}
+
+- (IBAction)onBtnStartBit:(id)sender {
+    if(!self.isFlashing){
+        [self.device lockForConfiguration:nil];
+        [self.device setTorchMode:AVCaptureTorchModeOn];
+        [self.device unlockForConfiguration];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
+-(void) cancelFlash {
+    dispatch_source_cancel(timer);
+    self.bitIndex = 0;
     [self.device lockForConfiguration:nil];
     [self.device setTorchMode:AVCaptureTorchModeOff];
     [self.device unlockForConfiguration];
-    MyCreateTimer(self);
+    self.isFlashing = NO;
+
 }
 
 - (void) flashNextBit {
     CFBit bit = CFBitVectorGetBitAtIndex(self.keyVector, self.bitIndex);
-    NSLog(@"Flash bit: %i", (unsigned int)bit);
+    printf("%i",(unsigned int) bit);
     [self.device lockForConfiguration:nil];
     if(bit == 0){
         [self.device setTorchMode:AVCaptureTorchModeOff];
@@ -131,13 +185,21 @@ void MyCreateTimer(id self)
         [self.device setTorchMode:AVCaptureTorchModeOn];
     }
     [self.device unlockForConfiguration];
-    if(self.keyVectorLength - 1 == self.bitIndex ){
-        dispatch_source_cancel(timer);
-        self.bitIndex = 0;
-        return;
-    }
     
-    self.bitIndex++;
+    
+    if(self.bitIndex == self.keyVectorLength - 1){
+        [self cancelFlash];
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Finished" message:@"The key has been transmitted" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+                                                                  [alert dismissViewControllerAnimated:YES completion:nil];
+                                                              }];
+        [alert addAction:defaultAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        self.bitIndex++;
+    }
 }
 
 @end
