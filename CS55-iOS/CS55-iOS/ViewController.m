@@ -176,18 +176,7 @@ void MyCreateTimer(id self)
 }
 
 - (void) flashNextBit {
-    CFBit bit = CFBitVectorGetBitAtIndex(self.keyVector, self.bitIndex);
-    printf("%i",(unsigned int) bit);
-    [self.device lockForConfiguration:nil];
-    if(bit == 0){
-        [self.device setTorchMode:AVCaptureTorchModeOff];
-    } else {
-        [self.device setTorchMode:AVCaptureTorchModeOn];
-    }
-    [self.device unlockForConfiguration];
-    
-    
-    if(self.bitIndex == self.keyVectorLength - 1){
+    if(self.bitIndex == self.keyVectorLength){
         [self cancelFlash];
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Finished" message:@"The key has been transmitted" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -198,6 +187,15 @@ void MyCreateTimer(id self)
         
         [self presentViewController:alert animated:YES completion:nil];
     } else {
+        CFBit bit = CFBitVectorGetBitAtIndex(self.keyVector, self.bitIndex);
+        printf("%i",(unsigned int) bit);
+        [self.device lockForConfiguration:nil];
+        if(bit == 0){
+            [self.device setTorchMode:AVCaptureTorchModeOff];
+        } else {
+            [self.device setTorchMode:AVCaptureTorchModeOn];
+        }
+        [self.device unlockForConfiguration];
         self.bitIndex++;
     }
 }

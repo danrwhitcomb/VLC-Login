@@ -240,10 +240,15 @@ void MyCreateTimer(id self)
             for (int i = 0; i < KEY_LENGTH; i++) {
                 printf("%i", key[i]);
             }
+            printf("\n");
             //[alert runModal];
             stdDev = 0;
             receiveCount = 0;
+            meanCount = 0;
+            maxMean = 0;
+            meanTotal = 0;
             currentState = WaitForStart;
+            timer = NULL;
             break;
         }
             
